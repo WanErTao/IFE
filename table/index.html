@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+	body,input{
+		margin:0;
+		padding:0;
+		font-size:25px;
+		font-family:Arial ;
+	}
+	div{
+		display:inline-block;
+	}
+	#table1{
+		border:1px solid black;
+		width:970px;
+		height:270px;
+		margin:200px auto;
+		padding:30px 0 0 160px;
+	}
+	#user{
+		width:516px;
+		height:64px;
+		border:2px solid #ccc;
+		box-shadow:0 2px 2px 2px #f8f8f8 inset;
+		border-radius:10px;
+		vertical-align: top;
+		outline:none;
+		padding-left:20px;
+	}
+	.name{
+		display:inline-block;
+		width:80px;
+		height:64px;
+		vertical-align: top;
+		line-height:64px;
+		font-weight: bold;
+	}
+	#btn{
+		vertical-align: top;
+		height:64px;
+		width:108px;
+		background:#2f79ba;
+		border:2px solid #286ca9;
+		border-radius:10px;
+		color:#faffff;
+		outline:none;
+	}
+	div span{
+		color:#b3b3b3;
+		font-weight:bold;
+	}
+</style>
+</head>
+<body>
+<form action='#' method='post' id="table1">
+	<span class='name'>名称</span>
+	<div id="box">
+		<input id="user" type="text" name='user' maxlength="16"></br>
+		<span>必填，长度为4~16个字符</span>
+	</div>
+	<input id="btn" type="button" value="验证">
+</form>
+<script>
+var oUser =document.getElementById('user');
+var oSpan =document.getElementById('box').getElementsByTagName('span')[0];
+var oBtn =document.getElementById('btn');
+oUser.onfocus=function(){
+	oSpan.innerHTML='必填，长度为4~16个字符';
+	oSpan.style.color='#b3b3b3';
+	this.style.borderColor='#ccc';
+}
+oBtn.onclick=function(){
+	var num =oUser.value.length;
+	if(oUser.value==''){
+		oSpan.innerHTML='姓名不能为空';
+		oSpan.style.color='red';
+		oUser.style.borderColor='red';
+	}else if(num<4){
+		oSpan.innerHTML='请输入长度为4~16个字符';
+		oSpan.style.color='red';
+		oUser.style.borderColor='red';
+	}else{
+		oSpan.innerHTML='名称格式正确';
+		oSpan.style.color='#5dbd40';
+		oUser.style.borderColor='#5dbd40';
+	}
+}
+</script>
+</body>
+</html>
